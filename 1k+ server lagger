@@ -1,0 +1,126 @@
+-- Small Release Speedrun Vuln 5 Minute
+-- HappyLand Lagger By Fedoratum#6195
+
+getgenv().On = true
+
+-- turn to false if you want it off
+
+if getgenv().On == false then
+return
+end
+
+local RE = game:GetService("ReplicatedStorage")
+local Events = RE:WaitForChild("Events")
+local AddToolEvent = Events:WaitForChild("AddToolEvent")
+
+-- Detect Remote That Adds Tools
+
+-- Simplify the remote using made function
+
+function Add(item)
+AddToolEvent:FireServer(item)
+end
+
+-- Get every argument tool Name sorrounding
+-- with addtoolevent.
+
+function Spam()
+Add("BeachBall")
+Add("SoccerBall")
+Add("BasketBall")
+Add("Binoculray")
+Add("BlueMultiblasterGun")
+Add("BunchOfBalloons")
+Add("CarrotSlingshot")
+Add("ChocolateMilk")
+Add("DanceRay")
+Add("FakeBomb")
+Add("FireExtinguisher")
+Add("Flashlight")
+Add("Gamaboi")
+Add("HeartBalloon")
+Add("OmegaRainbowSword")
+Add("PrettyPrettyPrincessSceptor")
+Add("SkeletonFoamFinger")
+Add("Syringe")
+Add("Umbrella")
+Add("2DGame")
+Add("Bloxiade")
+Add("BloxxyRadar")
+Add("BloxyCola")
+Add("BoomboxGearThree")
+Add("Boomerang")
+Add("CampingLantern")
+Add("ChocoCoin")
+Add("Compass")
+Add("DiscoBall")
+Add("Fireflies")
+Add("Frisbee")
+Add("GPS")
+Add("GoalaCola")
+Add("RedPaintBallGun")
+Add("IceCreamCone")
+Add("Redblox")
+Add("SantaSack")
+Add("Slingshot")
+Add("SuperFlyGoldBoombox")
+Add("TennisRacket")
+Add("TicTacToe")
+Add("AccelerationCoil")
+Add("GravityCoil")
+Add("RegenCoil")
+Add("NinjaPlushie")
+end
+
+-- Equip all tool to break the 
+-- script detecting same tools in backpack.
+
+function Equip()
+for i, x in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+if x:IsA("Tool") then
+x.Parent = game.Players.LocalPlayer.Character
+end
+end
+end
+
+-- Drop after equipping
+
+function Drop()
+for i, x in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+if x:IsA("Tool") then
+x.Parent = Workspace
+end
+end
+end
+
+-- Useless function, used it to spam tools
+
+function Activate()
+for i, x in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+if x:IsA("Tool") then
+x:Activate()
+end
+end
+end
+
+--[[
+Spam add to inventory the tools by ToolAddEvent Remote
+
+Equip every tool and make a random script break and not detect anything same (ToolName Related Detection) in backpack
+
+After equipping every tool we shall drop the tool and done you got the spam
+]]--
+
+local signal
+signal = game:GetService("RunService").RenderStepped:Connect(function()
+if getgenv().On == false then
+signal:Disconnect()
+return
+end
+Spam()
+Equip()
+Spam()
+game:GetService("RunService").Heartbeat:Wait()
+Spam()
+Drop()
+end)
