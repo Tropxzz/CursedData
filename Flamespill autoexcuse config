@@ -1,0 +1,7 @@
+getgenv().dmsgs = {
+  deathmessages = {"i was lagging", "that wasnt fair", "I saw a big banana in the sky", "I didn't see you", "U hacked", "Tropxz was in my room "}
+}
+--[[
+Auto-Excuse by flamespill#7488
+]]--
+loadstring(game:HttpGet("https://raw.githubusercontent.com/goldmoments/auto-excuse/main/Script"))("Auto-Excuse Script | flamespill#7488") 
